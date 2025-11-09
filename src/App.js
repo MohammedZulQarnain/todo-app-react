@@ -10,7 +10,6 @@ function App() {
   // 🧠 Load todos from localStorage when app starts
   useEffect(() => {
     const storedTodos = localStorage.getItem("todos");
-    console.log("Loaded from localStorage:", storedTodos);
     if (storedTodos?.length) {
       setTodos(JSON.parse(storedTodos));
     }
@@ -18,7 +17,6 @@ function App() {
 
   // 🧠 Save todos to localStorage whenever they change
   useEffect(() => {
-    console.log("Saving to localStorage:", todos);
     if (todos.length > 0) {
       localStorage.setItem("todos", JSON.stringify(todos));
     }
@@ -101,6 +99,7 @@ function App() {
                   onChange={(e) => setEditingText(e.target.value)}
                 />
                 <button onClick={() => handleSaveTodo(item.id)}>Save</button>
+                <button onClick={() => setEditingId(null)}>Cancel</button>
               </>
             ) : (
               <>
